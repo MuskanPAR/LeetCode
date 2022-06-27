@@ -1,0 +1,19 @@
+Partitioning Into Minimum Number Of Deci-Binary Numbers
+https://leetcode.com/problems/partitioning-into-minimum-number-of-deci-binary-numbers/
+
+
+JAVA solution---
+
+
+class Solution {
+    public int minPartitions(String n) {
+        char max='0';
+        for(int i=0;i<n.length();i++) {
+            if(n.charAt(i)>max) {
+                max=n.charAt(i);
+            }
+        }
+        int a=Character.getNumericValue(max);  
+        return a;
+    }
+}
