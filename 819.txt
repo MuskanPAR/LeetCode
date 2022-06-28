@@ -1,0 +1,44 @@
+Most Common Word--
+https://leetcode.com/problems/most-common-word/
+
+JAVA Code---
+
+class Solution {
+    public String mostCommonWord(String paragraph, String[] banned) {  
+        
+        String[] words=paragraph.replaceAll("[^A-Za-z]"," ").toLowerCase().split(" ");
+        
+        Set<String> bannedWords=new HashSet<>();
+        for(String b: banned) {
+            bannedWords.add(b);
+        }
+    	HashMap<String, Integer> hmap= new HashMap();
+    
+        for(String word:words) {
+            if(!bannedWords.contains(word)) {
+        
+                if(hmap.containsKey(word)) {
+                    hmap.put(word,hmap.get(word)+1);
+                }
+                else {
+                    hmap.put(word,1);
+                }
+            }
+            
+        }
+        
+       
+        String mostCommon="";
+        for(String word:hmap.keySet()){
+             if(mostCommon.equals("")) {
+                mostCommon=word;
+            }
+            else if (hmap.get(word) > hmap.get(mostCommon)) {
+                mostCommon=word;
+            }
+        }
+        
+        return mostCommon;
+       
+    }
+}
